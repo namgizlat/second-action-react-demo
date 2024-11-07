@@ -1,10 +1,9 @@
 name: issues
 on:
-  issues:
-    types: [opened, edited, milestoned]
+  [issues, workflow_dispatch]
 jobs:
   info:
     runs-on: ubuntu-latest
     steps:
       - name: iisue type
-        run: echo "Issue is ${{ github.event.issue.title }}"
+        run: echo "Issue is ${{ github.event }}"
