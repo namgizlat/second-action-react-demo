@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: iisue type
-        run: echo "Issue is ${{ toJson(github.event) }}"
+        run: echo "Issue is ${{ toJSON(github.event) }}"
