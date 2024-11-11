@@ -6,6 +6,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      script-file: ${{ steps.outputid.outputs.script-file }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -18,20 +20,16 @@ jobs:
           path: |
             src/test
             package.json
-      - name: upload artifacts 2
-        uses: actions/upload-artifact@v3
-        with:
-          name: second-arti
-          path: package.json
+      - name: output file name
+        id: outputid
+        run: echo 'script-file=aaaaa' >> $GITHUB_OUTPUT
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
         run: echo "Deploying..."
-      - name: download artifact
-        uses: actions/download-artifact@v3
-        with: 
-          name: second-arti
+      - name: using output valus
+        run: echo "${{ needs.build.outputs.script-file }}"
       - name: output content
         run: ls
