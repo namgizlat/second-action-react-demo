@@ -18,6 +18,11 @@ jobs:
           path: |
             src/test
             package.json
+      - name: upload artifacts 2
+        uses: actions/upload-artifact@v3
+        with:
+          name: second-arti
+          path: package.json
   deploy:
     needs: build
     runs-on: ubuntu-latest
