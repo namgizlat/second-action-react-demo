@@ -2,7 +2,7 @@ name: Deploy website
 on:
   push:
     branches:
-      - events
+      - ttt
 jobs:
   build:
     runs-on: ubuntu-latest
